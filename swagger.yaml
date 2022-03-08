@@ -1,0 +1,175 @@
+swagger: '2.0'
+info:
+  version: '0.1'
+  title: "PISA-lite"
+  description: This is an API for getting PISA interaction interface data in JSON format.
+  license:
+    name: Apache 2.0
+    url: https://github.com/PDBe-KB/pdbe-pisa-json/blob/main/LICENSE
+host: pdbe-kb.org
+basePath: /
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  /pisa/1cbs:
+    x-summary: PISA output
+    get:
+      summary: Interaction interface data per PDB entry
+      responses:
+        200:
+          description: Successful Response
+          schema:
+            type: object
+            items:
+              $ref: '#/definitions/PISA'
+definitions:
+  PISA:
+    title: PISA
+    type: object
+    properties:
+      pdb_id:
+        type: string
+        example: "1cbs"
+        description: "A PDB identifier in lower case"
+      pisa_version:
+        type: string
+        example: "2.0.0"
+        description: "The semantic version number of PISA"
+      assembly:
+        title: Assembly
+        type: object
+        properties:
+          dissociation_energy:
+            type: number
+            format: float
+            example: 0.21
+            description: "[NEED TO FILL IN]"
+          dissociation_area:
+            type: number
+            format: float
+            example: 11.2
+            description: "[NEED TO FILL IN]"
+          accessible_surface_area:
+            type: number
+            format: float
+            example: 13.4
+            description: "[NEED TO FILL IN]"
+          buried_surface_area:
+            type: number
+            format: float
+            example: 2.39
+            description: "[NEED TO FILL IN]"
+          entropy:
+            type: number
+            format: float
+            example: 0.1
+            description: "[NEED TO FILL IN]"
+          entropy_zero:
+            type: number
+            format: float
+            example: 0.02
+            description: "[NEED TO FILL IN]"
+          interfaces:
+            type: array
+            items:
+              $ref: '#/definitions/Interface'
+    required:
+      - pdb_id
+      - assembly
+  Interface:
+    title: Interface
+    type: object
+    properties:
+      interface_id:
+        type: integer
+        format: int32
+        example: 1
+        description: "Interface identifier"
+      interface_area:
+        type: number
+        format: float
+        example: 0.76
+        description: "[NEED TO FILL IN]"
+      solvation_energy:
+        type: number
+        format: float
+        example: 0.01
+        description: "[NEED TO FILL IN]"
+      p_value:
+        type: number
+        format: float
+        example: 0.0005
+        description: "[NEED TO FILL IN]"
+      stabilization_energy:
+        type: number
+        format: float
+        example: 0.03
+        description: "[NEED TO FILL IN]"
+      residues:
+        type: array
+        items:
+          $ref: '#/definitions/Residue'
+      bonds:
+        type: array
+        items:
+          type: object
+          properties:
+            bond_type:
+              type: string
+              example: "H-bond"
+              description: "[NEED TO FILL IN]"
+              enum: [
+                "H-bond"
+                ]
+            atoms:
+              type: array
+              items:
+                $ref: '#/definitions/Atom'
+  Residue:
+    title: Residue
+    type: object
+    properties:
+      _atom_site.label_comp_id:
+        type: string
+        example: "CYS"
+        description: "[NEED TO FILL IN]"
+      _atom_site.label_seq_id:
+        type: string
+        example: "1"
+        description: "[NEED TO FILL IN]"
+      solvation_energy:
+        type: number
+        format: float
+        example: 0.01
+        description: "[NEED TO FILL IN]"
+      accessible_surface_area:
+        type: number
+        format: float
+        example: 1.12
+        description: "[NEED TO FILL IN]"
+      buried_surface_area:
+        type: number
+        format: float
+        example: 0.46
+        description: "[NEED TO FILL IN]"
+  Atom:
+    title: Atom
+    type: object
+    properties:
+      _atom_site.id: 
+        type: string
+        example: "1"
+        description: "[NEED TO FILL IN]"
+      _atom_site.label_seq_id:
+        type: integer
+        format: int32
+        example: 1
+        description: "[NEED TO FILL IN]"
+      _atom_site.label_atom_id:
+        type: string
+        example: "CA"
+        description: "[NEED TO FILL IN]"
