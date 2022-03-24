@@ -18,7 +18,7 @@ paths:
   /pisa/1cbs:
     x-summary: PISA output
     get:
-      summary: Interaction interface data per PDB entry
+      summary: Interaction interface data per PDB assembly entry
       responses:
         200:
           description: Successful Response
@@ -47,32 +47,32 @@ definitions:
             type: number
             format: float
             example: 0.21
-            description: "[NEED TO FILL IN]"
+            description: "[Maximal free energy of dissociation  (kcal/mol)]"
           dissociation_area:
             type: number
             format: float
             example: 11.2
-            description: "[NEED TO FILL IN]"
+            description: "[Dissociation Interface Area (A^2)]"
           accessible_surface_area:
             type: number
             format: float
             example: 13.4
-            description: "[NEED TO FILL IN]"
+            description: "[Accessible surface area  (A^2)]"
           buried_surface_area:
             type: number
             format: float
             example: 2.39
-            description: "[NEED TO FILL IN]"
+            description: "[Buried surface area (A^2)]"
           entropy:
             type: number
             format: float
             example: 0.1
-            description: "[NEED TO FILL IN]"
+            description: "[Entropy change at dissociation ]"
           entropy_zero:
             type: number
             format: float
             example: 0.02
-            description: "[NEED TO FILL IN]"
+            description: "[ground-level entropy change at dissociation]"
           interfaces:
             type: array
             items:
@@ -93,22 +93,22 @@ definitions:
         type: number
         format: float
         example: 0.76
-        description: "[NEED TO FILL IN]"
+        description: "[Area of interface  (A^2)]"
       solvation_energy:
         type: number
         format: float
         example: 0.01
-        description: "[NEED TO FILL IN]"
+        description: "[Solvation energy (kcal/mol)]"
       p_value:
         type: number
         format: float
         example: 0.0005
-        description: "[NEED TO FILL IN]"
+        description: "[Probability that solvation energy gain for interface atom may be greater than binding energy]"
       stabilization_energy:
         type: number
         format: float
         example: 0.03
-        description: "[NEED TO FILL IN]"
+        description: "[Stabilisation energy (Kcal/mol)]"
       residues:
         type: array
         items:
@@ -120,8 +120,8 @@ definitions:
           properties:
             bond_type:
               type: string
-              example: "H-bond"
-              description: "[NEED TO FILL IN]"
+              example: "H-bonds"
+              description: "[Type of bond: Hydrogen bond (h-bonds), salt bridges (salt-bridges), disulfide bonds (ss-bonds), covalent bonds (cov-bonds), other contacts (other-bonds)]"
               enum: [
                 "H-bond"
                 ]
@@ -136,26 +136,26 @@ definitions:
       _atom_site.label_comp_id:
         type: string
         example: "CYS"
-        description: "[NEED TO FILL IN]"
+        description: "[residue name ]"
       _atom_site.label_seq_id:
         type: string
         example: "1"
-        description: "[NEED TO FILL IN]"
+        description: "[Sequence number]"
       solvation_energy:
         type: number
         format: float
         example: 0.01
-        description: "[NEED TO FILL IN]"
+        description: "[Solvation energy effect (kcal/mol]"
       accessible_surface_area:
         type: number
         format: float
         example: 1.12
-        description: "[NEED TO FILL IN]"
+        description: "[Accessible surface area (A^2)]"
       buried_surface_area:
         type: number
         format: float
         example: 0.46
-        description: "[NEED TO FILL IN]"
+        description: "[Buried surface area  (A^2)]"
   Atom:
     title: Atom
     type: object
@@ -163,13 +163,13 @@ definitions:
       _atom_site.id: 
         type: string
         example: "1"
-        description: "[NEED TO FILL IN]"
+        description: "[I am not sure what is this?]"
       _atom_site.label_seq_id:
         type: integer
         format: int32
         example: 1
-        description: "[NEED TO FILL IN]"
+        description: "[sequence number atom 1 (label)]"
       _atom_site.label_atom_id:
         type: string
         example: "CA"
-        description: "[NEED TO FILL IN]"
+        description: "[atomname ]"
