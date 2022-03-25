@@ -46,13 +46,13 @@ definitions:
           mmsize:
             type: integer
             format: int32
-            example: 15.61
+            example: 2
             description: "[Maximal free energy of dissociation  (kcal/mol)]"
           dissociation_energy:
             type: number
             format: float
             example: 15.61
-            description: "[Maximal free energy of dissociation  (kcal/mol)]
+            description: "[Maximal free energy of dissociation  (kcal/mol)]"
           accessible_surface_area:
             type: number
             format: float
@@ -86,10 +86,15 @@ definitions:
             type: string
             example: AAA[NA](2)[GOL](2)
             description: "[Composition]"
+          interface_count:
+            type: integer
+            format: int32
+            example: 1
+            description: "[Number of interfaces]"
           interfaces:
             type: array
             items:
-              $ref: '#/definitions/Interface'
+              $ref: '#/definitions/Interface'          
     required:
       - pdb_id
       - assembly
@@ -105,23 +110,23 @@ definitions:
       interface_area:
         type: number
         format: float
-        example: 0.76
+        example: 1427.5
         description: "[Area of interface  (A^2)]"
       solvation_energy:
         type: number
         format: float
-        example: 0.01
+        example: -18.22
         description: "[Solvation energy (kcal/mol)]"
-      p_value:
-        type: number
-        format: float
-        example: 0.0005
-        description: "[Probability that solvation energy gain for interface atom may be greater than binding energy]"
       stabilization_energy:
         type: number
         format: float
-        example: 0.03
+        example: -28.59
         description: "[Stabilisation energy (Kcal/mol)]"
+      p_value:
+        type: number
+        format: float
+        example: 0.095
+        description: "[Probability that solvation energy gain for interface atom may be greater than binding energy]"
       residues:
         type: array
         items:
