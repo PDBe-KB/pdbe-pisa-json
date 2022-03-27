@@ -127,6 +127,36 @@ definitions:
         format: float
         example: 0.095
         description: "[Probability that solvation energy gain for interface atom may be greater than binding energy]"
+      number_interface_residues:
+        type: integer
+        format: int32
+        example: 1
+        description: "Number of interface residues"  
+      number_hydrogen_bonds:
+        type: integer
+        format: int32
+        example: 1
+        description: "Number of interface hydrogen bonds"
+      number_salt_bridges:
+        type: integer
+        format: int32
+        example: 1
+        description: "Number of interface salt bridges"
+      number_covalent_bonds:
+        type: integer
+        format: int32
+        example: 1
+        description: "Number of interface covalent bonds"
+      number_disulfide_bonds:
+        type: integer
+        format: int32
+        example: 1
+        description: "Number of interface disulfide bonds"
+      number_other_bonds:
+        type: integer
+        format: int32
+        example: 1
+        description: "Number of other contacts within a distance of 4 A and not classified as any of the other bonds "
       residues:
         type: array
         items:
@@ -147,6 +177,12 @@ definitions:
               type: array
               items:
                 $ref: '#/definitions/Atom'
+            bond_distance:
+              type: number
+              format: float
+              example: 2.90
+              description: "[Bond distance (A)]"
+            
   Residue:
     title: Residue
     type: object
@@ -190,4 +226,4 @@ definitions:
       _atom_site.label_atom_id:
         type: string
         example: "CA"
-        description: "[atomname ]"
+        description: "[atom name ]"
