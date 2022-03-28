@@ -157,10 +157,6 @@ definitions:
         format: int32
         example: 1
         description: "Number of other contacts within a distance of 4 A and not classified as any of the other bonds "
-      residues:
-        type: array
-        items:
-          $ref: '#/definitions/Residue'
       bonds:
         type: array
         items:
@@ -214,16 +210,37 @@ definitions:
     title: Atom
     type: object
     properties:
+      _atom_site.residue: 
+        type: string
+        example: "1"
+        description: "[residue name]"
+      _atom_site.chain: 
+        type: string
+        example: "1"
+        description: "[chain name]"
+      _atom_site.label_asym_id: 
+        type: string
+        example: "1"
+        description: "[name chain (asym)]"
       _atom_site.id: 
         type: string
         example: "1"
         description: "[I am not sure what is this?]"
+      _atom_site.seq_num: 
+        type: intenger
+        format: int32
+        example: 2
+        description: "[sequence number atom (auth)]"
       _atom_site.label_seq_id:
         type: integer
         format: int32
-        example: 1
+        example: 5
         description: "[sequence number atom 1 (label)]"
       _atom_site.label_atom_id:
         type: string
         example: "CA"
         description: "[atom name ]"
+      _atom_site.inscode:
+        type: string
+        example: "CA"
+        description: "[atom name ]"     
