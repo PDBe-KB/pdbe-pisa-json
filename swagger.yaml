@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  version: '0.2'
+  version: '0.3'
   title: "PISA-lite"
   description: This is an API for getting PISA interaction interface data in JSON format.
   license:
@@ -29,9 +29,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/PISA'
+                $ref: '#/components/schemas/PISA'
         '400':
           description: bad input parameter
 components:
@@ -178,15 +176,59 @@ components:
                 enum: [
                   "H-bond"
                   ]
-              atoms:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Atom'
               bond_distance:
                 type: number
                 format: float
                 example: 2.90
                 description: "[Bond distance (A)]"
+              atom_site_residues:
+                type: array
+                items:
+                  type: string
+                  example: "ASN"
+                  description: "Three-letter code"
+              atom_site_chains:
+                type: array
+                items:
+                  type: string
+                  example: "A"
+                  description: "Author chain identifier"
+              atom_site_label_asym_ids:
+                type: array
+                items:
+                  type: string
+                  example: "A"
+                  description: "Asym chain identifier"
+              atom_site_ids: 
+                type: array
+                items:
+                  type: string
+                  example: "1"
+                  description: "Atom identifier"
+              atom_site_seq_nums: 
+                type: array
+                items:
+                  type: integer
+                  example: 2
+                  description: "Author atom sequence identifier"
+              atom_site_label_seq_ids:
+                type: array
+                items:
+                  type: integer
+                  example: 5
+                  description: "[sequence number atom 1 (label)]"
+              atom_site_label_atom_ids:
+                type: array
+                items:
+                  type: string
+                  example: "CA"
+                  description: "Atom name"
+              atom_site_inscodes:
+                type: array
+                items:
+                  type: string
+                  example: 1
+                  description: "Atom insertion code"
         molecules:
           type: array
           items:
@@ -210,72 +252,33 @@ components:
                 type: string
                 example: "A"
                 description: "PDB chain identifier of the molecule"
-              residues:
+              residue_label_comp_ids:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Residue'
-    Residue:
-      title: Residue
-      type: object
-      properties:
-        _atom_site.label_comp_id:
-          type: string
-          example: "CYS"
-          description: "[residue name ]"
-        _atom_site.label_seq_id:
-          type: string
-          example: "1"
-          description: "[Sequence number]"
-        solvation_energy:
-          type: number
-          format: float
-          example: 0.01
-          description: "[Solvation energy effect (kcal/mol]"
-        accessible_surface_area:
-          type: number
-          format: float
-          example: 1.12
-          description: "[Accessible surface area (A^2)]"
-        buried_surface_area:
-          type: number
-          format: float
-          example: 0.46
-          description: "[Buried surface area  (A^2)]"
-    Atom:
-      title: Atom
-      type: object
-      properties:
-        _atom_site.residue: 
-          type: string
-          example: "ASN"
-          description: "[residue name]"
-        _atom_site.chain: 
-          type: string
-          example: "A"
-          description: "[chain name (auth)]"
-        _atom_site.label_asym_id: 
-          type: string
-          example: "A"
-          description: "[name chain (asym)]"
-        _atom_site.id: 
-          type: string
-          example: "1"
-          description: "[I am not sure what is this?]"
-        _atom_site.seq_num: 
-          type: integer
-          format: int32
-          example: 2
-          description: "[sequence number atom (auth)]"
-        _atom_site.label_seq_id:
-          type: integer
-          format: int32
-          example: 5
-          description: "[sequence number atom 1 (label)]"
-        _atom_site.label_atom_id:
-          type: string
-          example: "CA"
-          description: "[atom name ]"
-        _atom_site.inscode:
-          type: string
-          example: 1
-          description: "[atom name ]"
+                  type: string
+                  example: "CYS"
+                  description: "Residue label"
+              residue_label_seq_ids:
+                type: array
+                items:
+                  type: string
+                  example: "1"
+                  description: "Sequence number"
+              solvation_energies:
+                type: array
+                items:
+                  type: number
+                  example: 0.01
+                  description: "Solvation energy effect (kcal/mol)"
+              accessible_surface_areas:
+                type: array
+                items:
+                  type: number
+                  example: 1.12
+                  description: "Accessible surface area (A^2)"
+              buried_surface_areas:
+                type: array
+                items:
+                  type: number
+                  example: 0.46
+                  description: "Buried surface area  (A^2)"
