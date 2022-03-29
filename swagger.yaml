@@ -1,246 +1,281 @@
-swagger: '2.0'
+openapi: 3.0.0
 info:
-  version: '0.1'
+  version: '0.2'
   title: "PISA-lite"
   description: This is an API for getting PISA interaction interface data in JSON format.
   license:
     name: Apache 2.0
     url: https://github.com/PDBe-KB/pdbe-pisa-json/blob/main/LICENSE
-host: pdbe-kb.org
-basePath: /
-schemes:
-- https
-consumes:
-- application/json
-produces:
-- application/json
+  contact:
+    email: pdbekb_help@ebi.ac.uk
 paths:
-  /pisa/1cbs:
-    x-summary: PISA output
+  '/pisa/{qualifier}.json':
     get:
       summary: Interaction interface data per PDB assembly entry
-      responses:
-        200:
-          description: Successful Response
+      description: "Interaction interface data per PDB assembly entry"
+      parameters:
+        - name: qualifier
+          description: A PDB identifier
+          example: '1cbs'
+          in: path
+          required: true
           schema:
-            type: object
-            items:
-              $ref: '#/definitions/PISA'
-definitions:
-  PISA:
-    title: PISA
-    type: object
-    properties:
-      pdb_id:
-        type: string
-        example: "1cbs"
-        description: "A PDB identifier in lower case"
-      pisa_version:
-        type: string
-        example: "2.0.0"
-        description: "The semantic version number of PISA"
-      assembly:
-        title: Assembly
-        type: object
-        properties:
-          mmsize:
-            type: integer
-            format: int32
-            example: 2
-            description: "[Maximal free energy of dissociation  (kcal/mol)]"
-          dissociation_energy:
-            type: number
-            format: float
-            example: 15.61
-            description: "[Maximal free energy of dissociation  (kcal/mol)]"
-          accessible_surface_area:
-            type: number
-            format: float
-            example: 19395.3
-            description: "[Accessible surface area  (A^2)]"
-          buried_surface_area:
-            type: number
-            format: float
-            example: 31514.17
-            description: "[Buried surface area (A^2)]"
-          entropy:
-            type: number
-            format: float
-            example: 12.98
-            description: "[Entropy change at dissociation ]"
-          dissociation_area:
-            type: number
-            format: float
-            example: 1427.5
-            description: "[Dissociation Interface Area (A^2)]"
-          solvation_energy_gain:
-            type: number
-            format: float
-            example: -35.28
-            description: "[Solvation energy gain (Kcal/mol)]"
-          formula:
             type: string
-            example: A(2)a(2)b(2)
-            description: "[Formula]"
-          composition:
-            type: string
-            example: AAA[NA](2)[GOL](2)
-            description: "[Composition]"
-          interface_count:
-            type: integer
-            format: int32
-            example: 1
-            description: "[Number of interfaces]"
-          interfaces:
-            type: array
-            items:
-              $ref: '#/definitions/Interface'          
-    required:
-      - pdb_id
-      - assembly
-  Interface:
-    title: Interface
-    type: object
-    properties:
-      interface_id:
-        type: integer
-        format: int32
-        example: 1
-        description: "Interface identifier"
-      interface_area:
-        type: number
-        format: float
-        example: 1427.5
-        description: "[Area of interface  (A^2)]"
-      solvation_energy:
-        type: number
-        format: float
-        example: -18.22
-        description: "[Solvation energy (kcal/mol)]"
-      stabilization_energy:
-        type: number
-        format: float
-        example: -28.59
-        description: "[Stabilisation energy (Kcal/mol)]"
-      p_value:
-        type: number
-        format: float
-        example: 0.095
-        description: "[Probability that solvation energy gain for interface atom may be greater than binding energy]"
-      number_interface_residues:
-        type: integer
-        format: int32
-        example: 1
-        description: "Number of interface residues"  
-      number_hydrogen_bonds:
-        type: integer
-        format: int32
-        example: 1
-        description: "Number of interface hydrogen bonds"
-      number_salt_bridges:
-        type: integer
-        format: int32
-        example: 1
-        description: "Number of interface salt bridges"
-      number_covalent_bonds:
-        type: integer
-        format: int32
-        example: 1
-        description: "Number of interface covalent bonds"
-      number_disulfide_bonds:
-        type: integer
-        format: int32
-        example: 1
-        description: "Number of interface disulfide bonds"
-      number_other_bonds:
-        type: integer
-        format: int32
-        example: 1
-        description: "Number of other contacts within a distance of 4 A and not classified as any of the other bonds "
-      bonds:
-        type: array
-        items:
+      responses:
+        '200':
+          description: | 
+            This is an example of what an annotations data exchange JSON 
+            would look like
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PISA'
+        '400':
+          description: bad input parameter
+components:
+  schemas:
+    PISA:
+      title: PISA
+      type: object
+      properties:
+        pdb_id:
+          type: string
+          example: "1cbs"
+          description: "A PDB identifier in lower case"
+        pisa_version:
+          type: string
+          example: "2.0.0"
+          description: "The semantic version number of PISA"
+        assembly:
+          title: Assembly
           type: object
           properties:
-            bond_type:
-              type: string
-              example: "H-bonds"
-              description: "[Type of bond: Hydrogen bond (h-bonds), salt bridges (salt-bridges), disulfide bonds (ss-bonds), covalent bonds (cov-bonds), other contacts (other-bonds)]"
-              enum: [
-                "H-bond"
-                ]
-            atoms:
-              type: array
-              items:
-                $ref: '#/definitions/Atom'
-            bond_distance:
+            mmsize:
+              type: integer
+              format: int32
+              example: 2
+              description: "Size of the assembly"
+            dissociation_energy:
               type: number
               format: float
-              example: 2.90
-              description: "[Bond distance (A)]"
-            
-  Residue:
-    title: Residue
-    type: object
-    properties:
-      _atom_site.label_comp_id:
-        type: string
-        example: "CYS"
-        description: "[residue name ]"
-      _atom_site.label_seq_id:
-        type: string
-        example: "1"
-        description: "[Sequence number]"
-      solvation_energy:
-        type: number
-        format: float
-        example: 0.01
-        description: "[Solvation energy effect (kcal/mol]"
-      accessible_surface_area:
-        type: number
-        format: float
-        example: 1.12
-        description: "[Accessible surface area (A^2)]"
-      buried_surface_area:
-        type: number
-        format: float
-        example: 0.46
-        description: "[Buried surface area  (A^2)]"
-  Atom:
-    title: Atom
-    type: object
-    properties:
-      _atom_site.residue: 
-        type: string
-        example: "ASN"
-        description: "[residue name]"
-      _atom_site.chain: 
-        type: string
-        example: "A"
-        description: "[chain name (auth)]"
-      _atom_site.label_asym_id: 
-        type: string
-        example: "A"
-        description: "[name chain (asym)]"
-      _atom_site.id: 
-        type: string
-        example: "1"
-        description: "[I am not sure what is this?]"
-      _atom_site.seq_num: 
-        type: integer
-        format: int32
-        example: 2
-        description: "[sequence number atom (auth)]"
-      _atom_site.label_seq_id:
-        type: integer
-        format: int32
-        example: 5
-        description: "[sequence number atom 1 (label)]"
-      _atom_site.label_atom_id:
-        type: string
-        example: "CA"
-        description: "[atom name ]"
-      _atom_site.inscode:
-        type: string
-        example: 1
-        description: "[atom name ]"     
+              example: 15.61
+              description: "[Maximal free energy of dissociation  (kcal/mol)]"
+            accessible_surface_area:
+              type: number
+              format: float
+              example: 19395.3
+              description: "[Accessible surface area  (A^2)]"
+            buried_surface_area:
+              type: number
+              format: float
+              example: 31514.17
+              description: "[Buried surface area (A^2)]"
+            entropy:
+              type: number
+              format: float
+              example: 12.98
+              description: "[Entropy change at dissociation ]"
+            dissociation_area:
+              type: number
+              format: float
+              example: 1427.5
+              description: "[Dissociation Interface Area (A^2)]"
+            solvation_energy_gain:
+              type: number
+              format: float
+              example: -35.28
+              description: "[Solvation energy gain (Kcal/mol)]"
+            formula:
+              type: string
+              example: A(2)a(2)b(2)
+              description: "[Formula]"
+            composition:
+              type: string
+              example: AAA[NA](2)[GOL](2)
+              description: "[Composition]"
+            interface_count:
+              type: integer
+              format: int32
+              example: 1
+              description: "[Number of interfaces]"
+            interfaces:
+              type: array
+              items:
+                $ref: '#/components/schemas/Interface'          
+      required:
+        - pdb_id
+        - assembly
+    Interface:
+      title: Interface
+      type: object
+      properties:
+        interface_id:
+          type: integer
+          format: int32
+          example: 1
+          description: "Interface identifier"
+        interface_area:
+          type: number
+          format: float
+          example: 1427.5
+          description: "[Area of interface  (A^2)]"
+        solvation_energy:
+          type: number
+          format: float
+          example: -18.22
+          description: "[Solvation energy (kcal/mol)]"
+        stabilization_energy:
+          type: number
+          format: float
+          example: -28.59
+          description: "[Stabilisation energy (Kcal/mol)]"
+        p_value:
+          type: number
+          format: float
+          example: 0.095
+          description: "[Probability that solvation energy gain for interface atom may be greater than binding energy]"
+        number_interface_residues:
+          type: integer
+          format: int32
+          example: 1
+          description: "Number of interface residues"  
+        number_hydrogen_bonds:
+          type: integer
+          format: int32
+          example: 1
+          description: "Number of interface hydrogen bonds"
+        number_salt_bridges:
+          type: integer
+          format: int32
+          example: 1
+          description: "Number of interface salt bridges"
+        number_covalent_bonds:
+          type: integer
+          format: int32
+          example: 1
+          description: "Number of interface covalent bonds"
+        number_disulfide_bonds:
+          type: integer
+          format: int32
+          example: 1
+          description: "Number of interface disulfide bonds"
+        number_other_bonds:
+          type: integer
+          format: int32
+          example: 1
+          description: "Number of other contacts within a distance of 4 A and not classified as any of the other bonds "
+        bonds:
+          type: array
+          items:
+            type: object
+            properties:
+              bond_type:
+                type: string
+                example: "H-bonds"
+                description: "[Type of bond: Hydrogen bond (h-bonds), salt bridges (salt-bridges), disulfide bonds (ss-bonds), covalent bonds (cov-bonds), other contacts (other-bonds)]"
+                enum: [
+                  "H-bond"
+                  ]
+              atoms:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Atom'
+              bond_distance:
+                type: number
+                format: float
+                example: 2.90
+                description: "[Bond distance (A)]"
+        molecules:
+          type: array
+          items:
+            type: object
+            properties:
+              molecule_id:
+                type: string
+                example: "1"
+                description: "Identifier of the molecule on the interface"
+              molecule_class:
+                type: string
+                example: "Protein"
+                description: "Molecule type/class"
+                enum: [
+                  "Protein",
+                  "Ligand",
+                  "RNA",
+                  "DNA"
+                  ]
+              chain_id:
+                type: string
+                example: "A"
+                description: "PDB chain identifier of the molecule"
+              residues:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Residue'
+    Residue:
+      title: Residue
+      type: object
+      properties:
+        _atom_site.label_comp_id:
+          type: string
+          example: "CYS"
+          description: "[residue name ]"
+        _atom_site.label_seq_id:
+          type: string
+          example: "1"
+          description: "[Sequence number]"
+        solvation_energy:
+          type: number
+          format: float
+          example: 0.01
+          description: "[Solvation energy effect (kcal/mol]"
+        accessible_surface_area:
+          type: number
+          format: float
+          example: 1.12
+          description: "[Accessible surface area (A^2)]"
+        buried_surface_area:
+          type: number
+          format: float
+          example: 0.46
+          description: "[Buried surface area  (A^2)]"
+    Atom:
+      title: Atom
+      type: object
+      properties:
+        _atom_site.residue: 
+          type: string
+          example: "ASN"
+          description: "[residue name]"
+        _atom_site.chain: 
+          type: string
+          example: "A"
+          description: "[chain name (auth)]"
+        _atom_site.label_asym_id: 
+          type: string
+          example: "A"
+          description: "[name chain (asym)]"
+        _atom_site.id: 
+          type: string
+          example: "1"
+          description: "[I am not sure what is this?]"
+        _atom_site.seq_num: 
+          type: integer
+          format: int32
+          example: 2
+          description: "[sequence number atom (auth)]"
+        _atom_site.label_seq_id:
+          type: integer
+          format: int32
+          example: 5
+          description: "[sequence number atom 1 (label)]"
+        _atom_site.label_atom_id:
+          type: string
+          example: "CA"
+          description: "[atom name ]"
+        _atom_site.inscode:
+          type: string
+          example: 1
+          description: "[atom name ]"
