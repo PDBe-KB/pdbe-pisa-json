@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  version: '0.4'
+  version: '0.5'
   title: "PISA-lite"
   description: This is an API for getting PISA interaction interface data in JSON format.
   license:
@@ -105,6 +105,112 @@ components:
       required:
         - pdb_id
         - assembly
+    Bonds:
+      title: Bonds
+      type: object
+      properties:
+        bond_distances:
+          type: array
+          items:
+            type: number
+            example: 2.90
+            description: "[Bond distance (A)]"
+        atom_site_1_residues:
+          type: array
+          items:
+            type: string
+            example: "ASN"
+            description: "Three-letter code"
+        atom_site_1_chains:
+          type: array
+          items:
+            type: string
+            example: "A"
+            description: "Author chain identifier"
+        atom_site_1_label_asym_ids:
+          type: array
+          items:
+            type: string
+            example: "A"
+            description: "Asym chain identifier"
+        atom_site_1_ids: 
+          type: array
+          items:
+            type: string
+            example: "1"
+            description: "Atom identifier"
+        atom_site_1_seq_nums: 
+          type: array
+          items:
+            type: integer
+            example: 2
+            description: "Author atom sequence identifier"
+        atom_site_1_label_seq_ids:
+          type: array
+          items:
+            type: integer
+            example: 5
+            description: "[sequence number atom 1 (label)]"
+        atom_site_1_label_atom_ids:
+          type: array
+          items:
+            type: string
+            example: "CA"
+            description: "Atom name"
+        atom_site_1_inscodes:
+          type: array
+          items:
+            type: string
+            example: 1
+            description: "Atom insertion code"
+        atom_site_2_residues:
+          type: array
+          items:
+            type: string
+            example: "ASN"
+            description: "Three-letter code"
+        atom_site_2_chains:
+          type: array
+          items:
+            type: string
+            example: "A"
+            description: "Author chain identifier"
+        atom_site_2_label_asym_ids:
+          type: array
+          items:
+            type: string
+            example: "A"
+            description: "Asym chain identifier"
+        atom_site_2_ids: 
+          type: array
+          items:
+            type: string
+            example: "1"
+            description: "Atom identifier"
+        atom_site_2_seq_nums: 
+          type: array
+          items:
+            type: integer
+            example: 2
+            description: "Author atom sequence identifier"
+        atom_site_2_label_seq_ids:
+          type: array
+          items:
+            type: integer
+            example: 5
+            description: "[sequence number atom 1 (label)]"
+        atom_site_2_label_atom_ids:
+          type: array
+          items:
+            type: string
+            example: "CA"
+            description: "Atom name"
+        atom_site_2_inscodes:
+          type: array
+          items:
+            type: string
+            example: 1
+            description: "Atom insertion code"
     Interface:
       title: Interface
       type: object
@@ -154,120 +260,16 @@ components:
           type: integer
           example: 1
           description: "Number of other contacts within a distance of 4 A and not classified as any of the other bonds "
-        bonds:
-          type: object
-          properties:
-            bond_types:
-              type: array
-              items:
-                type: string
-                example: "H-bonds"
-                description: "[Type of bond: Hydrogen bond (h-bonds), salt bridges (salt-bridges), disulfide bonds (ss-bonds), covalent bonds (cov-bonds), other contacts (other-bonds)]"
-                enum: [
-                  "H-bond"
-                  ]
-            bond_distances:
-              type: array
-              items:
-                type: number
-                example: 2.90
-                description: "[Bond distance (A)]"
-            atom_site_1_residues:
-              type: array
-              items:
-                type: string
-                example: "ASN"
-                description: "Three-letter code"
-            atom_site_1_chains:
-              type: array
-              items:
-                type: string
-                example: "A"
-                description: "Author chain identifier"
-            atom_site_1_label_asym_ids:
-              type: array
-              items:
-                type: string
-                example: "A"
-                description: "Asym chain identifier"
-            atom_site_1_ids: 
-              type: array
-              items:
-                type: string
-                example: "1"
-                description: "Atom identifier"
-            atom_site_1_seq_nums: 
-              type: array
-              items:
-                type: integer
-                example: 2
-                description: "Author atom sequence identifier"
-            atom_site_1_label_seq_ids:
-              type: array
-              items:
-                type: integer
-                example: 5
-                description: "[sequence number atom 1 (label)]"
-            atom_site_1_label_atom_ids:
-              type: array
-              items:
-                type: string
-                example: "CA"
-                description: "Atom name"
-            atom_site_1_inscodes:
-              type: array
-              items:
-                type: string
-                example: 1
-                description: "Atom insertion code"
-            atom_site_2_residues:
-              type: array
-              items:
-                type: string
-                example: "ASN"
-                description: "Three-letter code"
-            atom_site_2_chains:
-              type: array
-              items:
-                type: string
-                example: "A"
-                description: "Author chain identifier"
-            atom_site_2_label_asym_ids:
-              type: array
-              items:
-                type: string
-                example: "A"
-                description: "Asym chain identifier"
-            atom_site_2_ids: 
-              type: array
-              items:
-                type: string
-                example: "1"
-                description: "Atom identifier"
-            atom_site_2_seq_nums: 
-              type: array
-              items:
-                type: integer
-                example: 2
-                description: "Author atom sequence identifier"
-            atom_site_2_label_seq_ids:
-              type: array
-              items:
-                type: integer
-                example: 5
-                description: "[sequence number atom 1 (label)]"
-            atom_site_2_label_atom_ids:
-              type: array
-              items:
-                type: string
-                example: "CA"
-                description: "Atom name"
-            atom_site_2_inscodes:
-              type: array
-              items:
-                type: string
-                example: 1
-                description: "Atom insertion code"
+        hydrogen_bonds:
+          $ref: '#/components/schemas/Bonds' 
+        salt_bridges:
+          $ref: '#/components/schemas/Bonds' 
+        disulfide_bonds:
+          $ref: '#/components/schemas/Bonds'
+        covalent_bonds:
+          $ref: '#/components/schemas/Bonds' 
+        other_bonds:
+          $ref: '#/components/schemas/Bonds' 
         molecules:
           type: array
           items:
