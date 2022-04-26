@@ -42,6 +42,10 @@ components:
           type: string
           example: "1cbs"
           description: "A PDB identifier in lower case"
+        assembly_id:
+          type: string
+          example: "1"
+          description: "Assembly identifier"
         pisa_version:
           type: string
           example: "2.0.0"
@@ -299,12 +303,18 @@ components:
                   type: string
                   example: "CYS"
                   description: "Residue label"
-              residue_label_seq_ids:
+              residue_seq_ids:
                 type: array
                 items:
                   type: string
                   example: "1"
                   description: "Sequence number"
+              residue_label_seq_ids:
+                type: array
+                items:
+                  type: string
+                  example: "1"
+                  description: "Label sequence number"
               solvation_energies:
                 type: array
                 items:
