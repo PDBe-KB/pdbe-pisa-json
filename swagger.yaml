@@ -137,6 +137,24 @@ components:
             type: string
             example: "A"
             description: "Asym chain identifier"
+        atom_site_1_orig_label_asym_ids:
+          type: array
+          items:
+            type: string
+            example: "A"
+            description: "Asym chain identifier in the original model file"
+        atom_site_1_upn_accs:
+          type: array
+          items:
+            type: string
+            example: "P48491"
+            description: "Uniprot accession numbers"
+        atom_site_1_upn_nums:
+          type: array
+          items:
+            type: string
+            example: "2"
+            description: "Sequence position of the UniProt entry that corresponds to the residue mapping"
         atom_site_1_ids: 
           type: array
           items:
@@ -185,6 +203,24 @@ components:
             type: string
             example: "A"
             description: "Asym chain identifier"
+        atom_site_2_orig_label_asym_ids:
+          type: array
+          items:
+            type: string
+            example: "A"
+            description: "Asym chain identifier in the original model file"
+        atom_site_2_upn_accs:
+          type: array
+          items:
+            type: string
+            example: "P48491"
+            description: "Uniprot accession numbers"
+        atom_site_2_upn_nums:
+          type: array
+          items:
+            type: string
+            example: "2"
+            description: "Sequence position of the UniProt entry that corresponds to the residue mapping"      
         atom_site_2_ids: 
           type: array
           items:
