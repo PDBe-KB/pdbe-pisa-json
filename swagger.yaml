@@ -119,18 +119,18 @@ components:
             type: number
             example: 2.90
             description: "[Bond distance (A)]"
-        atom_site_1_residues:
-          type: array
-          items:
-            type: string
-            example: "ASN"
-            description: "Three-letter code"
         atom_site_1_chains:
           type: array
           items:
             type: string
             example: "A"
             description: "Author chain identifier"
+        atom_site_1_residues:
+          type: array
+          items:
+            type: string
+            example: "ASN"
+            description: "Three-letter code"
         atom_site_1_label_asym_ids:
           type: array
           items:
@@ -185,18 +185,18 @@ components:
             type: string
             example: "1"
             description: "Atom insertion code"
-        atom_site_2_residues:
-          type: array
-          items:
-            type: string
-            example: "ASN"
-            description: "Three-letter code"
         atom_site_2_chains:
           type: array
           items:
             type: string
             example: "A"
             description: "Author chain identifier"
+        atom_site_2_residues:
+          type: array
+          items:
+            type: string
+            example: "ASN"
+            description: "Three-letter code"
         atom_site_2_label_asym_ids:
           type: array
           items:
