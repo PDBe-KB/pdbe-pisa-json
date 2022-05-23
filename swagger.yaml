@@ -183,7 +183,7 @@ components:
           type: array
           items:
             type: string
-            example: 1
+            example: "1"
             description: "Atom insertion code"
         atom_site_2_residues:
           type: array
@@ -249,7 +249,7 @@ components:
           type: array
           items:
             type: string
-            example: 1
+            example: "1"
             description: "Atom insertion code"
     Interface:
       title: Interface
