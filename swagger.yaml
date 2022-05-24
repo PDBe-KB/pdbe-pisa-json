@@ -155,12 +155,6 @@ components:
             type: string
             example: "2"
             description: "Sequence position of the UniProt entry that corresponds to the residue mapping"
-        atom_site_1_ids: 
-          type: array
-          items:
-            type: string
-            example: "1"
-            description: "Atom identifier"
         atom_site_1_seq_nums: 
           type: array
           items:
@@ -221,12 +215,6 @@ components:
             type: string
             example: "2"
             description: "Sequence position of the UniProt entry that corresponds to the residue mapping"      
-        atom_site_2_ids: 
-          type: array
-          items:
-            type: string
-            example: "1"
-            description: "Atom identifier"
         atom_site_2_seq_nums: 
           type: array
           items:
