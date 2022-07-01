@@ -339,6 +339,12 @@ components:
                   type: string
                   example: "1"
                   description: "Label sequence number"
+              residue_ins_codes:
+                type: array
+                items:
+                  type: string
+                  example: "1"
+                  description: "Insertion codes"
               solvation_energies:
                 type: array
                 items:
