@@ -345,6 +345,12 @@ components:
                   type: string
                   example: "1"
                   description: "Insertion codes"
+              residue_bonds:
+                type: array
+                items:
+                  type: string
+                  example: "1"
+                  description: "Residue bonds"
               solvation_energies:
                 type: array
                 items:
