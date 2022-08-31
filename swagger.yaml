@@ -483,11 +483,11 @@ components:
               type: string
               example: AAA[NA](2)[GOL](2)
               description: "[Composition]"
-            interface_count:
+            R350:
               type: integer
               format: int32
-              example: 1
-              description: "[Number of interfaces]"
+              example: "1"
+              description: "Remark R350"
       required:
         - pdb_id
         - assembly
