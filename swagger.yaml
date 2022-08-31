@@ -369,3 +369,125 @@ components:
                   type: number
                   example: 0.46
                   description: "Buried surface area  (A^2)"
+paths:
+  '/pisa/{qualifier}.json':
+    get:
+      summary: Assembly data per PDB assembly entry
+      description: "Assembly data per PDB assembly entry"
+      parameters:
+        - name: qualifier
+          description: A PDB identifier
+          example: '1cbs'
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: | 
+            This is an example of what an annotations data exchange JSON 
+            would look like
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PISA'
+        '400':
+          description: bad input parameter
+components:
+  schemas:
+    PISA:
+      title: PISA
+      type: object
+      properties:
+        pdb_id:
+          type: string
+          example: "1cbs"
+          description: "A PDB identifier in lower case"
+        assembly_id:
+          type: string
+          example: "1"
+          description: "Assembly identifier"
+        pisa_version:
+          type: string
+          example: "2.0.0"
+          description: "The semantic version number of PISA"
+        assembly:
+          title: Assembly
+          type: object
+          properties:
+            size:
+              type: integer
+              format: int32
+              example: 6
+              description: "Size of the assembly"     
+            score:
+              type: string
+              format: int32
+              example: "2"
+              description: "Macromolecular size of the assembly"
+            macromolecular_size:
+              type: integer
+              format:  int32
+              example: 2
+              description: "Macromolecular size of the assembly"
+            dissociation_energy:
+              type: number
+              format: float
+              example: 15.61
+              description: "[Maximal free energy of dissociation  (kcal/mol)]"
+            accessible_surface_area:
+              type: number
+              format: float
+              example: 19395.3
+              description: "[Accessible surface area  (A^2)]"
+            buried_surface_area:
+              type: number
+              format: float
+              example: 31514.17
+              description: "[Buried surface area (A^2)]"
+            entropy:
+              type: number
+              format: float
+              example: 12.98
+              description: "[Entropy change at dissociation ]"
+            dissociation_area:
+              type: number
+              format: float
+              example: 1427.5
+              description: "[Dissociation Interface Area (A^2)]"
+            solvation_energy_gain:
+              type: number
+              format: float
+              example: -35.28
+              description: "[Solvation energy gain (Kcal/mol)]"
+            number_of_uc:
+              type: integer
+              format: int32
+              example: 1
+              description: "number of assemblies in unit cells"
+            number_of_dissociated_elements:
+              type: integer
+              format: int32
+              example: 2
+              description: "Number of dissociating parts"
+            symmetry_number:
+              type: integer
+              format: int32
+              example: 2
+              description: "Symmetry number"
+            formula:
+              type: string
+              example: A(2)a(2)b(2)
+              description: "[Formula]"
+            composition:
+              type: string
+              example: AAA[NA](2)[GOL](2)
+              description: "[Composition]"
+            interface_count:
+              type: integer
+              format: int32
+              example: 1
+              description: "[Number of interfaces]"
+      required:
+        - pdb_id
+        - assembly
