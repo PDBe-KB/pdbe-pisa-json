@@ -486,7 +486,7 @@ components:
             R350:
               type: integer
               format: int32
-              example: "1"
+              example: 1
               description: "Remark R350"
       required:
         - pdb_id
