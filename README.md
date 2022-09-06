@@ -32,10 +32,17 @@ https://www.ebi.ac.uk/pdbe/api/doc/pisa.html
 
 https://pisalite.docs.apiary.io/#reference/0/pisaqualifierjson/interaction-interface-data-per-pdb-assembly-entry
 
-2. The json files include new data and information about assemblies:
+2. The json file {pdb_id}-assembly{assembly_id}interfaces.json includes new data and information for interfaces and assemblies:
+- Assembly information has been added: Size of the assembly, dissociation energy, accessible surface area, entropy, dissociation area, solvation energy  gain, formula and composition.
+- Interface information removed: css, overlap, x_rel, fixed, interface type, number of occurances
 - List of valid interfaces of protein complexes (polymer-polymer interactions) 
-- List of Vander Waals contacts (cutoff 5 Angstroms)
-- Interface uniprot accesion and sequence position of the UniProt entry that corresponds to the residue mapping 
-- Author atom sequence identifiers for contacts at the interface
-- Asym chain identifiers in the original model file for interface atoms
+- List of van der Waals contacts (cutoff 5 Angstroms, labelled as 'other bonds')
+Information added for every contact (for atom1 and atom2):
+- Residue names (Three-letter code)
+- Author chain identifier
+- Interface uniprot accesion numbers
+- sequence position of the UniProt entry that corresponds to the residue mapping 
+- Author atom sequence identifiers for contacts 
+- Asym chain identifiers in the original model 
 - sequence number for interface atoms (label)
+- Atom insertion code
