@@ -37,12 +37,18 @@ https://pisalite.docs.apiary.io/#reference/0/pisaqualifierjson/interaction-inter
 - Interface information removed: css, overlap, x_rel, fixed, interface type, number of occurances
 - List of valid interfaces of protein complexes (polymer-polymer interactions) 
 - List of van der Waals contacts (cutoff 5 Angstroms, labelled as 'other bonds')
+
 Information added for every contact (for atom1 and atom2):
+
 - Residue names (Three-letter code)
 - Author chain identifier
 - Interface uniprot accesion numbers
 - sequence position of the UniProt entry that corresponds to the residue mapping 
-- Author atom sequence identifiers for contacts 
+- Author atom sequence identifiers 
 - Asym chain identifiers in the original model 
-- sequence number for interface atoms (label)
+- sequence number (label)
 - Atom insertion code
+
+3. {pdb_id}-assembly{assembly_code}.json is data used in one PISA API in the entry pages: https://www.ebi.ac.uk/pdbe/api/pisa/asis/:pdbid/:assemblyidwill. There is not new data added in thin PISA API, only the PISA version to obtain this data is updated. 
+
+
