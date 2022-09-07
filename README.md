@@ -55,12 +55,12 @@ Information added for every contact (for atom1 and atom2):
 
 We have selected different examples to show the new data of the PISA API endpoint, for various macromolecular complexes. Examples include protein assemblies with different number of components (monomer, dimer, tetramer, nonamer), a virus and a protein-DNA complex (Transposase complexed with tramposon end DNA). 
 
-See [Examples](https://github.com/PDBe-KB/pdbe-pisa-json/examples) folder in this repository:
+See [Examples](https://github.com/PDBe-KB/pdbe-pisa-json/tree/main/examples) folder in this repository:
 
--[1j6z](): Monomer.  Actin   https://www.ebi.ac.uk/pdbe/entry/pdb/1j6z
--[6nxr](): Dimer.DIP-eta IG1 homodimer https://www.ebi.ac.uk/pdbe/entry/pdb/6nrx
--[1fqy](): Tetramer. Aquaporin https://www.ebi.ac.uk/pdbe/entry/pdb/1fqy
--[2cha](): Nonamer.Crymotripsin https://www.ebi.ac.uk/pdbe/entry/pdb/2cha
--[1ruz](): Influenza A virus https://www.ebi.ac.uk/pdbe/entry/pdb/1ruz
--[1muh](): Transposase complexed with tramposon end DNA https://www.ebi.ac.uk/pdbe/entry/pdb/1muh
+- [1j6z](https://github.com/PDBe-KB/pdbe-pisa-json/tree/main/examples/monomer_1j6z): Monomer.  Actin   https://www.ebi.ac.uk/pdbe/entry/pdb/1j6z
+- [6nrx](https://github.com/PDBe-KB/pdbe-pisa-json/tree/main/examples/dimer_6nrx): Dimer.DIP-eta IG1 homodimer https://www.ebi.ac.uk/pdbe/entry/pdb/6nrx
+- [1fqy](https://github.com/PDBe-KB/pdbe-pisa-json/tree/main/examples/tetramer_1fpy): Tetramer. Aquaporin https://www.ebi.ac.uk/pdbe/entry/pdb/1fqy
+- [2cha](https://github.com/PDBe-KB/pdbe-pisa-json/tree/main/examples/nonamer_2cha): Nonamer.Crymotripsin https://www.ebi.ac.uk/pdbe/entry/pdb/2cha
+- [1ruz](https://github.com/PDBe-KB/pdbe-pisa-json/tree/main/examples/virus_1ruz): Influenza A virus https://www.ebi.ac.uk/pdbe/entry/pdb/1ruz
+- [1muh](https://github.com/PDBe-KB/pdbe-pisa-json/tree/main/examples/complex_dna_1muh): Transposase complexed with tramposon end DNA https://www.ebi.ac.uk/pdbe/entry/pdb/1muh
 
