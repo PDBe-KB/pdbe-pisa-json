@@ -1,5 +1,5 @@
-## PISA-lite
-PISA-lite (Protein Interfaces, surfaces and assemblies) is a softaware developed for the investigation of macromolecular interfaces (such as proteins, DNA/RNA and ligands) and for the identification of probable quaternary structures or assemblies. 
+## PISA
+PISA (Protein Interfaces, surfaces and assemblies) is a software developed for the investigation of macromolecular interfaces (such as proteins, DNA/RNA and ligands) and for the identification of probable quaternary structures or assemblies. 
 
 PISA can perfom the following tasks :
 
@@ -53,3 +53,5 @@ Information added for every contact (for atom1 and atom2):
 
 ## Examples 
 
+We have selected different examples to show the new data of the PISA API endpoint, for various macromolecular complexes. Examples include protein assemblies with different number of components (monomer, dimer, tetramer, nonamer), a virus and a protein-DNA complex (Transposase complexed with tramposon end DNA). 
+See [Examples](https://github.com/PDBe-KB/pdbe-pisa-json) folder in this repository. 
