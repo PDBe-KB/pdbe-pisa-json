@@ -49,6 +49,6 @@ Information added for every contact (for atom1 and atom2):
 - sequence number (label)
 - Atom insertion code
 
-3. {pdb_id}-assembly{assembly_code}.json is data used in one PISA API in the entry pages: https://www.ebi.ac.uk/pdbe/api/pisa/asis/:pdbid/:assemblyidwill. There is not new data added in thin PISA API, only the PISA version to obtain this data is updated. 
+3. {pdb_id}-assembly{assembly_code}.json is data used in one PISA API in the entry pages: https://www.ebi.ac.uk/pdbe/api/pisa/asis/:pdbid/:assemblyidwill. There is not new data added in this PISA API.  The only change is an update in the PISA version to obtain this data.
 
 
