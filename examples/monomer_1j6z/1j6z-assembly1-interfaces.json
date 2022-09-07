@@ -1,0 +1,1 @@
+{"PISA": {"pdb_id": "1j6z", "assembly_id": "1", "pisa_version": "2.0", "assembly": {"mmsize": "1", "dissociation_energy": -3.0, "accessible_surface_area": 16576.74, "buried_surface_area": 2013.44, "entropy": 4.85, "dissociation_area": 322.74, "solvation_energy_gain": -57.49, "formula": "Aa(6)bc", "composition": "A[CA](6)[ADP][RHO]", "interface_count": 0, "interfaces": []}}}
