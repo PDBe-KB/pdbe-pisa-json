@@ -54,4 +54,13 @@ Information added for every contact (for atom1 and atom2):
 ## Examples 
 
 We have selected different examples to show the new data of the PISA API endpoint, for various macromolecular complexes. Examples include protein assemblies with different number of components (monomer, dimer, tetramer, nonamer), a virus and a protein-DNA complex (Transposase complexed with tramposon end DNA). 
-See [Examples](https://github.com/PDBe-KB/pdbe-pisa-json) folder in this repository. 
+
+See [Examples](https://github.com/PDBe-KB/pdbe-pisa-json/examples) folder in this repository:
+
+-[1j6z](): Monomer.  Actin   https://www.ebi.ac.uk/pdbe/entry/pdb/1j6z
+-[6nxr](): Dimer.DIP-eta IG1 homodimer https://www.ebi.ac.uk/pdbe/entry/pdb/6nrx
+-[1fqy](): Tetramer. Aquaporin https://www.ebi.ac.uk/pdbe/entry/pdb/1fqy
+-[2cha](): Nonamer.Crymotripsin https://www.ebi.ac.uk/pdbe/entry/pdb/2cha
+-[1ruz](): Influenza A virus https://www.ebi.ac.uk/pdbe/entry/pdb/1ruz
+-[1muh](): Transposase complexed with tramposon end DNA https://www.ebi.ac.uk/pdbe/entry/pdb/1muh
+
