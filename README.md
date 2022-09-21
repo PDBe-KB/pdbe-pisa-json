@@ -75,6 +75,59 @@ The [examples](https://github.com/PDBe-KB/pdbe-pisa-json/tree/main/examples) fol
 - [1ruz](https://github.com/PDBe-KB/pdbe-pisa-json/tree/main/examples/virus_1ruz): Viral assembly; [Influenza virus](https://www.ebi.ac.uk/pdbe/entry/pdb/1ruz)
 - [1muh](https://github.com/PDBe-KB/pdbe-pisa-json/tree/main/examples/complex_dna_1muh): protein/DNA complex; [Transposase complexed with DNA](https://www.ebi.ac.uk/pdbe/entry/pdb/1muh)
 
+### Simple example of assembly interfaces JSON
+```
+{
+    "PISA": {
+        "pdb_id": "1j6z", 
+        "assembly_id": "1", 
+        "pisa_version": "2.0", 
+        "assembly": {
+            "mmsize": "1", 
+            "dissociation_energy": -3.0, 
+            "accessible_surface_area": 16576.74, 
+            "buried_surface_area": 2013.44, 
+            "entropy": 4.85, 
+            "dissociation_area": 322.74, 
+            "solvation_energy_gain": -57.49, 
+            "formula": "Aa(6)bc", 
+            "composition": "A[CA](6)[ADP][RHO]", 
+            "interface_count": 0, 
+            "interfaces": []
+        }
+    }
+}
+```
+
+### Simple example of assembly JSON
+```
+{
+    "PISA": {
+        "pdb_id": "1j6z", 
+        "assembly_id": "1", 
+        "pisa_version": "2.0", 
+        "assembly": {
+            "id": "1", 
+            "size": "9", 
+            "score": "", 
+            "macromolecular_size": "1", 
+            "dissociation_energy": -3.0, 
+            "accessible_surface_area": 16576.74, 
+            "buried_surface_area": 2013.44, 
+            "entropy": 4.85, 
+            "dissociation_area": 322.74, 
+            "solvation_energy_gain": -57.49, 
+            "number_of_uc": "0", 
+            "number_of_dissociated_elements": "2", 
+            "symmetry_number": "1", 
+            "formula": "Aa(6)bc", 
+            "composition": "A[CA](6)[ADP][RHO]", 
+            "R350": ""
+        }
+    }
+}
+```
+
 ## Versioning
 
 We use [SemVer](https://semver.org) for versioning.
