@@ -1,7 +1,8 @@
 # PISA interaction interface and assembly JSON specifications
+
 PISA (Protein Interfaces, surfaces and assemblies) is a software that can analyse macromolecular interaction interfaces of proteins and nucleic acids and identify probable quaternary structures and assemblies.
 
-PISA can perfom the following tasks:
+PISA perfoms the following tasks:
 
 1. Analyse macromolecular interaction interfaces 
 2. Identify probable assemblies
