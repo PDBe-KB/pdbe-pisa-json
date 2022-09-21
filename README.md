@@ -1,20 +1,19 @@
-## PISA
-PISA (Protein Interfaces, surfaces and assemblies) is a software developed for the investigation of macromolecular interfaces (such as proteins, DNA/RNA and ligands) and for the identification of probable quaternary structures or assemblies. 
+# PISA
+PISA (Protein Interfaces, surfaces and assemblies) is a software that can analyse macromolecular interaction interfaces of proteins and nucleic acids and identify probable quaternary structures and assemblies.
 
-PISA can perfom the following tasks :
+PISA can perfom the following tasks:
 
-1. Explore and identify macromolecular interfaces 
-2. Identification of probable assemblies
-3. Database searches of structurally similar interfaces and assemblies
+1. Analyse macromolecular interaction interfaces 
+2. Identify probable assemblies
+3. Perform database searches to find structurally similar interfaces and assemblies
 
-The code is the latest version of the PISA code used in CCP4. For more information about PISA software :
-https://www.ccp4.ac.uk/html/pisa.html
+The PDBe implementation of PISA is based on CCP4 PISA. For more information about PISA software, see the [CCP4 PISA documentation page](https://www.ccp4.ac.uk/html/pisa.html).
 
-## News: PISA API endpoints migration
+## PISA API endpoints migration
 
-On 17th October all PISA API endpoints(https://www.ebi.ac.uk/pdbe/api/doc/pisa.html ) will be retired and replaced with two new API endpoints (see description below).
+**On 17th October 2022 [every PISA API endpoint](https://www.ebi.ac.uk/pdbe/api/doc/pisa.html) will be retired and replaced with two new API endpoints (see details below).**
 
-If you wish to receive updates about these changes, subscribe to the mail lists :
+If you wish to receive updates about these changes, consider subscribing to the following mailing lists:
 
 *pdbe-api-users@ebi.ac.uk*
 
@@ -22,45 +21,66 @@ If you wish to receive updates about these changes, subscribe to the mail lists 
 
 ## Legacy API
 
-The old API points that will be retired on 17th October can be found here:
-
-https://www.ebi.ac.uk/pdbe/api/doc/pisa.html
+The old API points that will be retired on the 17th October 2022 can be found at https://www.ebi.ac.uk/pdbe/api/doc/pisa.html
 
 ## New API endpoints
 
-1. There are two new API enpoints that consists of two json files. These files are obtained with PISA and contain information about protein interfaces and assemblies. The json schemas of these two files can be found here: 
+### API specification
+There are two new API endpoints which return responses in JSON format. The data are obtained from PISA and contain information about protein interfaces and assemblies. The JSON schemas of these two endpoints are [available at Apiary](https://pisalite.docs.apiary.io/#reference/0/pisaqualifierjson/interaction-interface-data-per-pdb-assembly-entry).
 
-https://pisalite.docs.apiary.io/#reference/0/pisaqualifierjson/interaction-interface-data-per-pdb-assembly-entry
-
-2. The json file {pdb_id}-assembly{assembly_id}interfaces.json includes new data and information for interfaces and assemblies:
-- Assembly information has been added: Size of the assembly, dissociation energy, accessible surface area, entropy, dissociation area, solvation energy  gain, formula and composition.
-- Interface information removed: css, overlap, x_rel, fixed, interface type, number of occurances
+### Data description
+The JSON response `{pdb_id}-assembly{assembly_id}interfaces.json` includes new data and information for interfaces and assemblies:
+- New assembly information: 
+  - Size of the assembly
+  - Dissociation energy
+  - Accessible surface area
+  - Entropy
+  - Dissociation area
+  - Solvation energy gain
+  - Formula
+  - Composition.
+- Removed interface information: 
+  - CSS
+  - Overlap
+  - X_rel
+  - Fixed 
+  - Interface type 
+  - Number of occurances
 - List of valid interfaces of protein complexes (polymer-polymer interactions) 
-- List of van der Waals contacts (cutoff 5 Angstroms, labelled as 'other bonds')
+- List of van der Waals contacts (with a cutoff of 5 Angstroms, labelled as 'other bonds')
 
-Information added for every contact (for atom1 and atom2):
+Information added for every contact (for `atom1` and `atom2`):
 
 - Residue names (Three-letter code)
 - Author chain identifier
-- Interface uniprot accesion numbers
-- sequence position of the UniProt entry that corresponds to the residue mapping 
+- Interface UniProt accesion numbers
+- Sequence position of the UniProt entry that corresponds to the residue mapping 
 - Author atom sequence identifiers 
 - Asym chain identifiers in the original model 
-- sequence number (label)
+- Sequence number (label)
 - Atom insertion code
 
-3. {pdb_id}-assembly{assembly_code}.json is data used in one PISA API in the entry pages: https://www.ebi.ac.uk/pdbe/api/pisa/asis/:pdbid/:assemblyidwill. There is not new data added in this PISA API.  The only change is an update in the PISA version to obtain this data.
+The JSON data from `{pdb_id}-assembly{assembly_code}.json` replaces the legacy PISA API endpoint https://www.ebi.ac.uk/pdbe/api/pisa/asis/:pdbid/:assemblyidwill. No new data has been added, and the data structure is identical between the old and the new versions. The only difference is that the new version of the data is obtained from the new PDBe PISA implementation.
 
 ## Examples 
 
-We have selected different examples to show the new data of the PISA API endpoint, for various macromolecular complexes. Examples include protein assemblies with different number of components (monomer, dimer, tetramer, nonamer), a virus and a protein-DNA complex (Transposase complexed with tramposon end DNA). 
+The following examples show the new data of the PISA API endpoints, for various macromolecular complexes. Examples include protein assemblies with different number of components (monomer, dimer, tetramer, nonamer), a viral assembly, and a protein-DNA complex (Transposase complexed with tramposon end DNA).
 
-See [Examples](https://github.com/PDBe-KB/pdbe-pisa-json/tree/main/examples) folder in this repository:
+The [examples](https://github.com/PDBe-KB/pdbe-pisa-json/tree/main/examples) folder in this repository contains the following:
 
-- [1j6z](https://github.com/PDBe-KB/pdbe-pisa-json/tree/main/examples/monomer_1j6z): Monomer.  Actin   https://www.ebi.ac.uk/pdbe/entry/pdb/1j6z
-- [6nrx](https://github.com/PDBe-KB/pdbe-pisa-json/tree/main/examples/dimer_6nrx): Dimer.DIP-eta IG1 homodimer https://www.ebi.ac.uk/pdbe/entry/pdb/6nrx
-- [1fqy](https://github.com/PDBe-KB/pdbe-pisa-json/tree/main/examples/tetramer_1fpy): Tetramer. Aquaporin https://www.ebi.ac.uk/pdbe/entry/pdb/1fqy
-- [2cha](https://github.com/PDBe-KB/pdbe-pisa-json/tree/main/examples/nonamer_2cha): Nonamer.Crymotripsin https://www.ebi.ac.uk/pdbe/entry/pdb/2cha
-- [1ruz](https://github.com/PDBe-KB/pdbe-pisa-json/tree/main/examples/virus_1ruz): Influenza A virus https://www.ebi.ac.uk/pdbe/entry/pdb/1ruz
-- [1muh](https://github.com/PDBe-KB/pdbe-pisa-json/tree/main/examples/complex_dna_1muh): Transposase complexed with tramposon end DNA https://www.ebi.ac.uk/pdbe/entry/pdb/1muh
+- [1j6z](https://github.com/PDBe-KB/pdbe-pisa-json/tree/main/examples/monomer_1j6z): Monomer; [Actin](https://www.ebi.ac.uk/pdbe/entry/pdb/1j6z)
+- [6nrx](https://github.com/PDBe-KB/pdbe-pisa-json/tree/main/examples/dimer_6nrx): Dimer; [DIP-eta IG1 homodimer](https://www.ebi.ac.uk/pdbe/entry/pdb/6nrx)
+- [1fqy](https://github.com/PDBe-KB/pdbe-pisa-json/tree/main/examples/tetramer_1fpy): Tetramer; [Aquaporin](https://www.ebi.ac.uk/pdbe/entry/pdb/1fqy)
+- [2cha](https://github.com/PDBe-KB/pdbe-pisa-json/tree/main/examples/nonamer_2cha): Nonamer; [Crymotripsin](https://www.ebi.ac.uk/pdbe/entry/pdb/2cha)
+- [1ruz](https://github.com/PDBe-KB/pdbe-pisa-json/tree/main/examples/virus_1ruz): Viral assembly; [Influenza virus](https://www.ebi.ac.uk/pdbe/entry/pdb/1ruz)
+- [1muh](https://github.com/PDBe-KB/pdbe-pisa-json/tree/main/examples/complex_dna_1muh): protein/DNA complex; [Transposase complexed with DNA](https://www.ebi.ac.uk/pdbe/entry/pdb/1muh)
 
+## LICENSE
+
+All the data are made available under [CC-BY 4.0 license](https://creativecommons.org/licenses/by/4.0/). All the source code is available under [Apache 2.0 license](https://github.com/PDBe-KB/pdbe-pisa-json/blob/main/LICENSE).
+
+## Authors
+* [Grisell Diaz Leines](https://github.com/grisell) - Lead developer
+* [Mihaly Varadi](https://github.com/mvaradi) - Review and management 
+
+To contribute, please refer to the [contribution guidelines](https://github.com/PDBe-KB/pdbe-pisa-json/blob/main/CONTRIBUTING.md).
