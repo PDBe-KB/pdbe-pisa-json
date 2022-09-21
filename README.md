@@ -1,4 +1,4 @@
-# PISA
+# PISA interaction interface and assembly JSON specifications
 PISA (Protein Interfaces, surfaces and assemblies) is a software that can analyse macromolecular interaction interfaces of proteins and nucleic acids and identify probable quaternary structures and assemblies.
 
 PISA can perfom the following tasks:
@@ -75,7 +75,11 @@ The [examples](https://github.com/PDBe-KB/pdbe-pisa-json/tree/main/examples) fol
 - [1ruz](https://github.com/PDBe-KB/pdbe-pisa-json/tree/main/examples/virus_1ruz): Viral assembly; [Influenza virus](https://www.ebi.ac.uk/pdbe/entry/pdb/1ruz)
 - [1muh](https://github.com/PDBe-KB/pdbe-pisa-json/tree/main/examples/complex_dna_1muh): protein/DNA complex; [Transposase complexed with DNA](https://www.ebi.ac.uk/pdbe/entry/pdb/1muh)
 
-## LICENSE
+## Versioning
+
+We use [SemVer](https://semver.org) for versioning.
+
+## License
 
 All the data are made available under [CC-BY 4.0 license](https://creativecommons.org/licenses/by/4.0/). All the source code is available under [Apache 2.0 license](https://github.com/PDBe-KB/pdbe-pisa-json/blob/main/LICENSE).
 
