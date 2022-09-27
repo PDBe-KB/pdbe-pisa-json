@@ -12,7 +12,7 @@ The PDBe implementation of PISA is based on CCP4 PISA. For more information abou
 
 ## PISA API endpoints migration
 
-**On 17th October 2022 [every PISA API endpoint](https://www.ebi.ac.uk/pdbe/api/doc/pisa.html) will be retired and replaced with two new API endpoints (see details below).**
+**On TBD [every PISA API endpoint](https://www.ebi.ac.uk/pdbe/api/doc/pisa.html) will be retired and replaced with two new API endpoints (see details below).**
 
 If you wish to receive updates about these changes, consider subscribing to the following mailing lists:
 
