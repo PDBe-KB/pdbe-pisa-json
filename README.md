@@ -22,7 +22,7 @@ If you wish to receive updates about these changes, consider subscribing to the 
 
 ## Legacy API
 
-The old API points that will be retired on the 17th October 2022 can be found at https://www.ebi.ac.uk/pdbe/api/doc/pisa.html
+The old API points that will be retired on **TBD** can be found at https://www.ebi.ac.uk/pdbe/api/doc/pisa.html
 
 ## New API endpoints
 
