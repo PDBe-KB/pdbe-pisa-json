@@ -9,36 +9,6 @@ info:
   contact:
     email: pdbekb_help@ebi.ac.uk
 paths:
-  '/pdbe/api/pisa/interfaces/{pdbid}/{assemblyid}':
-    get:
-      summary: Interaction interface data per PDB assembly id
-      description: "Returns details of the interface for given pdbid and assembly id."
-      parameters:
-        - name: pdbid
-          description: A PDB identifier
-          example: '1cbs'
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: assemblyid
-          description: An assembly identifier
-          example: '1'
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: | 
-            This is an example of what an annotations data exchange JSON 
-            would look like
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PISA'
-        '400':
-          description: bad input parameter
   '/pdbe/api/pisa/assembly/{pdbid}/{assemblyid}':
     get:
       summary: Assembly data per PDB assembly id
@@ -66,7 +36,37 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Assembly'
+                $ref: '#/components/schemas/PISA_assembly'
+        '400':
+          description: bad input parameter
+  '/pdbe/api/pisa/interfaces/{pdbid}/{assemblyid}':
+    get:
+      summary: Interaction interface data per PDB assembly id
+      description: "Returns details of the interface for given pdbid and assembly id."
+      parameters:
+        - name: pdbid
+          description: A PDB identifier
+          example: '1cbs'
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: assemblyid
+          description: An assembly identifier
+          example: '1'
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: | 
+            This is an example of what an annotations data exchange JSON 
+            would look like
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PISA_interfaces'
         '400':
           description: bad input parameter
   '/pdbe/api/pisa/interface/{pdbid}/{assemblyid}/{interfaceid}':
@@ -108,6 +108,28 @@ paths:
           description: bad input parameter
 components:
   schemas:
+    PISA_assembly:
+      title: pdb_id
+      type: object
+      properties:
+        pdb_id:
+          type: array
+          items:
+             $ref: '#/components/schemas/Assembly'
+      required:
+        - pdb_id
+        - assembly
+    PISA_interfaces:
+      title: pdb_id
+      type: object
+      properties:
+        pdb_id:
+          type: array
+          items:
+             $ref: '#/components/schemas/PISA'
+      required:
+        - pdb_id
+        - assembly
     PISA:
       title: pdb_id
       type: object
@@ -168,9 +190,6 @@ components:
                   type: array
                   items:
                     $ref: '#/components/schemas/Interface'          
-      required:
-        - pdb_id
-        - assembly
     Bonds:
       title: Bonds
       type: object
@@ -515,13 +534,9 @@ components:
               type: integer
               example: 1
               description: "Remark R350"
-      required:
-        - pdb_id
-        - assembly
     PISA_interface:
       title: PISA_interface
       type: object
-      description: "A PDB identifier in lower case"
       properties:
         interface:
               type: array
