@@ -9,7 +9,7 @@ info:
   contact:
     email: pdbekb_help@ebi.ac.uk
 paths:
-  '/pdbe/api/pisa/interface/{pdbid}/{assemblyid}':
+  '/pdbe/api/pisa/interfaces/{pdbid}/{assemblyid}':
     get:
       summary: Interaction interface data per PDB assembly id
       description: "Returns details of the interface for given pdbid and assembly id."
@@ -39,7 +39,7 @@ paths:
                 $ref: '#/components/schemas/PISA'
         '400':
           description: bad input parameter
-  '/pdbe/api/pisa/assemblylist/{pdbid}/{assemblyid}':
+  '/pdbe/api/pisa/assembly/{pdbid}/{assemblyid}':
     get:
       summary: Assembly data per PDB assembly id
       description: "Returns a list of assemblies."
@@ -72,13 +72,10 @@ paths:
 components:
   schemas:
     PISA:
-      title: PISA
+      title: pdb_id
       type: object
+      description: "A PDB identifier in lower case"
       properties:
-        pdb_id:
-          type: string
-          example: "1cbs"
-          description: "A PDB identifier in lower case"
         assembly_id:
           type: string
           example: "1"
@@ -398,13 +395,10 @@ components:
                   example: 0.46
                   description: "Buried surface area  (A^2)"
     Assembly:
-      title: Assembly
+      title: pdb_id
       type: object
+      description: "A PDB identifier in lower case"
       properties:
-        pdb_id:
-          type: string
-          example: "1cbs"
-          description: "A PDB identifier in lower case"
         assembly_id:
           type: string
           example: "1"
@@ -417,10 +411,18 @@ components:
           title: Assembly
           type: object
           properties:
+            id:
+              type: string
+              example: "1"
+              description: "Assembly identifier"
             size:
               type: integer
               example: 6
               description: "Size of the assembly"     
+            interface_count:
+              type: integer
+              example: 1
+              description: "[Number of interfaces]"
             score:
               type: string
               example: "2"
