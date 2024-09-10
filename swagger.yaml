@@ -109,7 +109,7 @@ paths:
 components:
   schemas:
     PISA_interfaces:
-      title: pdb_id
+      title: pisa
       type: object
       properties:
         pdb_id:
@@ -147,7 +147,7 @@ components:
                 entropy:
                   type: number
                   example: 12.98
-                  description: "[Entropy change at dissociation ]"
+                  description: "[Entropy change at dissociation (kcal/mol) ]"
                 dissociation_area:
                   type: number
                   example: 1427.5
